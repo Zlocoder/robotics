@@ -5,7 +5,9 @@ return [
     'name' => 'Robotics',
     'aliases' => [
         'admin' => '@app/admin',
-        'site' => '@app/site'
+        'site' => '@app/site',
+        'images_url' => '/images',
+        'images_path' => __DIR__ . '/../../images'
     ],
     'basePath' => dirname(__DIR__),
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
