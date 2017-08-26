@@ -25,6 +25,12 @@ use yii\helpers\Url;
                 ]]
             ]
         ]) ?>
+
+        <?php if (!\Yii::$app->admin->isGuest) { ?>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="<?= Url::to(['auth/logout']) ?>">Выйти (<?= \Yii::$app->admin->login ?>)</a></li>
+            </ul>
+        <?php } ?>
     </div>
 
     <?php \yii\bootstrap\NavBar::end(); ?>

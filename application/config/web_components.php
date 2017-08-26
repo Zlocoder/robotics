@@ -20,6 +20,13 @@ return [
         'class' => 'app\classes\User',
         'identityClass' => false,
         'enableAutoLogin' => true,
+        'idParam' => 'user'
+    ],
+    'admin' => [
+        'class' => 'app\classes\User',
+        'identityClass' => 'admin\models\AdminUser',
+        'enableAutoLogin' => true,
+        'idParam' => 'admin'
     ],
     'mailer' => [
         'class' => 'yii\swiftmailer\Mailer',
