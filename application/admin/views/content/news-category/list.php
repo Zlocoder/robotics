@@ -1,7 +1,7 @@
 <?php
 /**
  * @var $dataProvider \yii\data\ActiveDataProvider
- * @var $filterModel \admin\models\NewsFilter
+ * @var $filterModel \admin\models\NewsCategoryFilter
  */
 ?>
 
@@ -9,13 +9,14 @@
     <?= $this->chunk('breadcrumbs', [
         'links' => [
             ['label' => 'Панель управления', 'url' => ['dashboard/index']],
-            ['label' => 'Новости']
+            ['label' => 'Новости', 'url' => ['news/index']],
+            ['label' => 'Категории']
         ]
     ]) ?>
 
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>Новости</h1>
+            <h1>Категории новостей</h1>
         </div>
     </div>
 
@@ -35,7 +36,7 @@
                 'dataProvider' => $dataProvider,
                 'filterModel' => $filterModel,
                 'layout' => "{items}\n{pager}",
-                'emptyText' => 'Нет новостей',
+                'emptyText' => 'Нет категорий',
                 'formatter' => [
                     'class' => 'yii\i18n\Formatter',
                     'nullDisplay' => ''
@@ -46,25 +47,18 @@
                         'headerOptions' => ['class' => 'col-num'],
                     ],
                     [
-                        'attribute' => 'image',
+                        'attribute' => 'name',
+                        'label' => 'Категория',
                         'value' => function($model) {
-                            return \yii\helpers\Html::img($model->getImageUrl([50,50]));
+                            return \yii\helpers\Html::a($model->name, ['index', 'NewsCategoryFilter' => ['parentId' => $model->id]]);
                         },
                         'format' => 'html'
                     ],
                     [
-                        'attribute' => 'title',
-                        'label' => 'Заголовок',
-                    ],
-                    [
-                        'attribute' => 'categoryId',
-                        'label' => 'Категория',
-                        'value' => 'category.name',
-                        'filter' => \app\models\NewsCategory::getOptions(false)
-                    ],
-                    [
-                        'attribute' => 'created',
-                        'label' => 'Дата создания',
+                        'attribute' => 'parentId',
+                        'label' => 'Родительская категория',
+                        'value' => 'parent.name',
+                        'filter' => \app\models\NewsCategory::getOptions()
                     ],
                     [
                         'class' => 'yii\grid\ActionColumn',

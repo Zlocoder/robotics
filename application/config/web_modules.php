@@ -16,5 +16,8 @@ return [
         'layoutPath' => '@admin/views/layouts',
         'layout' => 'main',
         'defaultRoute' => 'dashboard'
-    ]
-];
+    ],
+    'filemanager' => [
+        'class'         => 'linchpinstudios\filemanager\Module',
+        'path'          => '/upload'
+    ],];

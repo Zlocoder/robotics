@@ -1,0 +1,40 @@
+main {
+    margin-top: 70px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.alert {
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.grid-view th {
+    text-align: center;
+}
+
+.grid-view td {
+    text-align: center;
+}
+
+.grid-view th.col-num {
+    width: 70px;
+}
+
+.grid-view .form-control {
+    height: 30px;
+}
+
+.panel .panel-heading h1 {
+    margin: 0;
+}

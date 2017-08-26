@@ -21,7 +21,9 @@
     <?= $this->chunk('header') ?>
 
     <main>
-        <?= $content ?>
+        <div class="content">
+            <?= $content ?>
+        </div>
     </main>
 
     <?= $this->chunk('footer') ?>

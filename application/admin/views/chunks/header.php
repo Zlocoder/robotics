@@ -18,7 +18,12 @@ use yii\helpers\Url;
             'options' => [
                 'class' => 'nav navbar-nav'
             ],
-            'items' => []
+            'items' => [
+                ['label' =>'Новости', 'items' => [
+                    ['label' => 'Категории', 'url' => Url::to(['news-category/index'])],
+                    ['label' => 'Новости', 'url' => Url::to(['news/index'])],
+                ]]
+            ]
         ]) ?>
     </div>
 
