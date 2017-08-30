@@ -220,6 +220,41 @@ header {
     color: inherit;
 }
 
+.navbar nav.in-section > ul > li > a {
+    font-size: 12px;
+}
+
+.navbar nav.in-section > ul > li.active > a {
+    color: #ff5722;
+}
+
+
+.navbar nav.in-section > ul > li.root > a {
+    color: #ff5722;
+    font-size: 18px;
+}
+
+.navbar nav.in-section > ul > li.root > a:after {
+    content: ' -';
+}
+
+.navbar nav.in-section > ul > li:first-child i {
+    display: block;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 5px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.navbar nav.in-section > ul > li:first-child:hover i {
+    color: #039be5;
+}
+
+.navbar nav.in-section > ul > li:first-child > ul > li > a {
+    font-size: 18px;
+}
+
 .content {
     box-sizing: border-box;
     width: 1140px;
