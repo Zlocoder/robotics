@@ -138,10 +138,10 @@ class NewsForm extends \yii\base\Model {
                 }
             }
 
-            $images = (new Query())->select('image')->from('NewsContentImages')->where(['newsId' => $this->_news->id])->column();
+            $images = (new Query())->select('image')->from('NewsContentImage')->where(['newsId' => $this->_news->id])->column();
 
             if (!empty($images)) {
-                \Yii::$app->db->createCommand()->delete('NewsContentImages', ['newsId' => $this->_news->id])->execute();
+                \Yii::$app->db->createCommand()->delete('NewsContentImage', ['newsId' => $this->_news->id])->execute();
 
                 foreach ($images as $image) {
                     if (strpos($this->_news->textFull, $file) !== false) {

@@ -6,6 +6,8 @@ use site\models\NewsCategory;
 use yii\helpers\Url;
 
 class Controller extends \app\classes\Controller {
+    public $menuSection;
+
     public function beforeAction($action) {
         if (parent::beforeAction($action)) {
             $this->initMainMenu();
@@ -19,47 +21,47 @@ class Controller extends \app\classes\Controller {
     public function initMainMenu() {
         $this->view->params['menu'] = [
             'news' => [
-                'label' => 'Новости',
+                'name' => 'Новости',
                 'url' => Url::to(['news/index']),
                 'items' => NewsCategory::getMenu()
             ],
             'articles' => [
-                'label' => 'Статьи',
+                'name' => 'Статьи',
                 'url' => '#',
                 'items' => []
             ],
             'shop' => [
-                'label' => 'Магазин',
+                'name' => 'Магазин',
                 'url' => '#',
                 'items' => []
             ],
             'reviews' => [
-                'label' => 'Обзоры',
+                'name' => 'Обзоры',
                 'url' => '#',
                 'items' => []
             ],
             'craft' => [
-                'label' => 'Сделай сам',
+                'name' => 'Сделай сам',
                 'url' => '#',
                 'items' => []
             ],
             'questions' => [
-                'label' => 'Вопрос/Ответ',
+                'name' => 'Вопрос/Ответ',
                 'url' => '#',
                 'items' => []
             ],
             'announces' => [
-                'label' => 'Афиша',
+                'name' => 'Афиша',
                 'url' => '#',
                 'items' => []
             ],
             'organizations' => [
-                'label' => 'Организации',
+                'name' => 'Организации',
                 'url' => '#',
                 'items' => []
             ],
             'people' => [
-                'label' => 'Люди',
+                'name' => 'Люди',
                 'url' => '#',
                 'items' => []
             ]

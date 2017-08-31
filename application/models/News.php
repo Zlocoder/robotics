@@ -80,11 +80,11 @@ class News extends \yii\db\ActiveRecord {
 
     public function getCategoryRecursive() {
         $ids = explode('|', $this->categories);
-        $ids = array_walk($ids, function(&$str) {
+        array_walk($ids, function(&$str) {
             $str = trim($str, '[]');
         });
 
-        return NewsCategory::find()->where(['id' => $ids]);
+        return NewsCategory::find()->where(['id' => $ids])->orderBy(['id' => SORT_DESC]);
     }
 
     public function getTagsArray() {
@@ -104,23 +104,23 @@ class News extends \yii\db\ActiveRecord {
         $suffix = $size ? "_{$size[0]}_{$size[1]}" : '';
 
         if ($this->image) {
-            return \Yii::getAlias("@images_url/news/{$this->image}{$suffix}.png");
+            return \Yii::getAlias("@web/upload/{$this->image}{$suffix}.png");
         }
 
-        return \Yii::getAlias("@images_url/news/default{$suffix}.png");
+        return \Yii::getAlias("@web/upload/default{$suffix}.png");
     }
 
     public function setNewImage($image) {
         if (!$image) { return; }
 
         if ($this->image) {
-            @unlink(\Yii::getAlias("@images_path/news/{$this->image}.png"));
+            @unlink(\Yii::getAlias("@webroot/upload/{$this->image}.png"));
         }
 
         $this->image = \Yii::$app->security->generateRandomString(16);
-        $path = \Yii::getAlias("@images_path/news/{$this->image}");
+        $path = \Yii::getAlias("@webroot/upload/{$this->image}");
 
-        $image->saveAs(\Yii::getAlias("@images_path/news/{$this->image}"));
+        $image->saveAs(\Yii::getAlias("@webroot/upload/{$this->image}"));
 
         $image = Image::getImagine()->open($path);
         $image->save($path . '.png');
