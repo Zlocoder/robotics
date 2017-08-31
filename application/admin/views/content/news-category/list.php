@@ -55,12 +55,6 @@
                         'format' => 'html'
                     ],
                     [
-                        'attribute' => 'parentId',
-                        'label' => 'Родительская категория',
-                        'value' => 'parent.name',
-                        'filter' => \app\models\NewsCategory::getOptions()
-                    ],
-                    [
                         'class' => 'yii\grid\ActionColumn',
                         'template' => "{update} {delete}"
                     ]

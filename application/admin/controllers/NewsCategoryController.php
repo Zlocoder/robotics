@@ -21,17 +21,7 @@ class NewsCategoryController extends \admin\classes\Controller {
                 'pageSizeParam' => false
             ],
             'sort' => [
-                'attributes' => [
-                    'id',
-                    'parentId' => [
-                        'asc' => ['parent.name' => SORT_ASC, 'name' => SORT_ASC],
-                        'desc' => ['parent.name' => SORT_DESC, 'name' => SORT_ASC],
-                        'default' => SORT_ASC
-                    ],
-                    'name'
-                ],
                 'defaultOrder' => [
-                    'parentId' => SORT_ASC,
                     'name' => SORT_ASC
                 ],
             ]

@@ -30,10 +30,6 @@
                             <?= $form->field($model, 'slug')->label('ЧПУ') ?>
                         <?php } ?>
 
-                        <?= $form->field($model, 'parentId')->label('Родительская категория')
-                            ->dropDownList(\app\models\NewsCategory::getOptions(), ['prompt' => ''])
-                        ?>
-
                         <?= $form->field($model, 'h1')->label('h1 заголовок') ?>
 
                         <?= $form->field($model, 'metaTitle')->label('Мета заголовок') ?>

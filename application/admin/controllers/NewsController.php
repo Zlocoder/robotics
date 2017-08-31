@@ -78,7 +78,7 @@ class NewsController extends \admin\classes\Controller {
             }
         }
 
-        return $this->render('form', [
+        return $this->render('form-tabs', [
             'model' => $form
         ]);
     }
@@ -108,7 +108,7 @@ class NewsController extends \admin\classes\Controller {
             }
         }
 
-        return $this->render('form', [
+        return $this->render('form-tabs', [
             'model' => $form
         ]);
     }

@@ -7,7 +7,6 @@ use yii\base\Exception;
 use yii\helpers\ArrayHelper;
 
 class NewsCategoryForm extends \yii\base\Model {
-    public $parentId;
     public $name;
     public $slug;
     public $redirect;
@@ -37,13 +36,6 @@ class NewsCategoryForm extends \yii\base\Model {
                 'on' => ['create', 'update']
             ],
             [
-                'parentId', 'exist',
-                'targetClass' => NewsCategory::className(),
-                'targetAttribute' => 'id',
-                'message' => 'Такой категории не существует',
-                'on' => ['create', 'update']
-            ],
-            [
                 'redirect', 'url',
                 'message' => 'Некорректный url',
                 'on' => ['create', 'update']
@@ -52,7 +44,6 @@ class NewsCategoryForm extends \yii\base\Model {
             [
                 'name', 'unique',
                 'targetClass' => NewsCategory::className(),
-                'targetAttribute' => ['parentId', 'name'],
                 'message' => 'Такое название уже существует',
                 'on' => ['create']
             ],
@@ -72,7 +63,6 @@ class NewsCategoryForm extends \yii\base\Model {
             [
                 'name', 'unique',
                 'targetClass' => NewsCategory::className(),
-                'targetAttribute' => ['parentId', 'name'],
                 'filter' => ['!=', 'id', $this->_category->id],
                 'message' => 'Такое название уже существует',
                 'on' => ['update']
@@ -80,7 +70,6 @@ class NewsCategoryForm extends \yii\base\Model {
             [
                 'slug', 'unique',
                 'targetClass' => NewsCategory::className(),
-                'targetAttribute' => ['parentId', 'slug'],
                 'filter' => ['!=', 'id', $this->_category->id],
                 'message' => 'Такой ЧПУ уже существует',
                 'on' => ['update']
@@ -92,7 +81,6 @@ class NewsCategoryForm extends \yii\base\Model {
         $this->_category = $category;
         $this->name = $category->name;
         $this->slug = $category->slug;
-        $this->parentId = $category->parentId;
         $this->h1 = $category->h1;
         $this->metaTitle = $category->metaTitle;
         $this->metaDescription = $category->metaDescription;
@@ -111,7 +99,6 @@ class NewsCategoryForm extends \yii\base\Model {
         $this->_category->scenario = 'safe';
         $this->_category->name = $this->name;
         $this->_category->slug = $this->slug;
-        $this->_category->parentId = $this->parentId;
         $this->_category->h1 = $this->h1;
         $this->_category->metaTitle = $this->metaTitle;
         $this->_category->metaDescription = $this->metaDescription;
@@ -122,12 +109,5 @@ class NewsCategoryForm extends \yii\base\Model {
         }
 
         throw new Exception('При сохранении категории возникла ошибка');
-    }
-
-    public function getParentIdOptions() {
-        return ArrayHelper::map(
-            NewsCategory::find()->where(['parentId' => null])->select(['id', 'name'])->asArray()->all(),
-            'id', 'name'
-        );
     }
 }

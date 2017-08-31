@@ -11,9 +11,9 @@ class m170815_011335_News extends Migration
             'title' => $this->string(128)->notNull(),
             'slug' => $this->string(128)->notNull(),
             'categoryId' => $this->integer()->notNull(),
-            'categories' => $this->string(128)->notNull(),
             'created' => $this->dateTime()->notNull(),
             'textShort' => $this->text()->notNull(),
+            'textHelp' => $this->text()->notNull(),
             'textFull' => $this->text()->notNull(),
             'h1' => $this->string(128),
             'image' => $this->string(16),
@@ -24,10 +24,10 @@ class m170815_011335_News extends Migration
             'redirect' => $this->string(256),
         ]);
 
-        $this->createIndex('News_categoryId_title', 'news', ['categoryId', 'title'], true);
-        $this->createIndex('News_categoryId_slug', 'news', ['categoryId', 'slug'], true);
+        $this->createIndex('News_title', 'news', 'title', true);
+        $this->createIndex('News_slug', 'news', 'slug', true);
 
-        $this->addForeignKey('News_categoryId_FK', 'news', 'categoryId', 'newsCategory', 'id');
+        $this->addForeignKey('News_categoryId_FK', 'News', 'categoryId', 'NewsCategory', 'id');
     }
 
     public function safeDown()

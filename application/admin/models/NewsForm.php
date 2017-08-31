@@ -2,7 +2,6 @@
 
 namespace admin\models;
 
-use app\models\NewsCategory;
 use yii\base\Exception;
 use yii\db\Query;
 
@@ -11,6 +10,8 @@ class NewsForm extends \yii\base\Model {
     public $slug;
     public $categoryId;
     public $textShort;
+    public $helpTitles = [];
+    public $helpTexts = [];
     public $textFull;
     public $h1;
     public $image;
@@ -30,6 +31,30 @@ class NewsForm extends \yii\base\Model {
                 'message' => 'Введите значение',
                 'on' => ['create', 'update']
             ],
+            [
+                ['helpTitles', 'helpTexts'], 'each',
+                'rule' => [
+                    'required',
+                    'message' => 'Введите значение',
+                ],
+                'when' => function($model) {
+                    return (count($model->helpTitles)) > 1 || $model->helpTitles[0] || $model->helpTexts[0];
+                },
+                'on' => ['create', 'update']
+            ],
+            [
+                ['helpTitles'], 'each',
+                'rule' => [
+                    'string',
+                    'max' => 128,
+                    'tooLong' => 'Превышен лимит символов (128)'
+                ],
+                'when' => function($model) {
+                    return (count($model->helpTitles)) > 1 || $model->helpTitles[0] || $model->helpTexts[0];
+                },
+                'on' => ['create', 'update']
+            ],
+
             [
                 ['title', 'slug', 'h1', 'metaTitle'], 'string',
                 'max' => 128,
@@ -97,6 +122,15 @@ class NewsForm extends \yii\base\Model {
         $this->metaDescription = $news->metaDescription;
         $this->tags = $news->tagsString;
         $this->redirect = $news->redirect;
+
+        if ($news->textHelp) {
+            $textHelpArray = $news->textHelpArray;
+
+            foreach ($textHelpArray as $textHelp) {
+                $this->helpTitles[] = $textHelp['title'];
+                $this->helpTexts[] = $textHelp['text'];
+            }
+        }
     }
 
     public function getNews() {
@@ -122,6 +156,18 @@ class NewsForm extends \yii\base\Model {
         $this->_news->tags = $this->tags;
         $this->_news->redirect = $this->redirect;
 
+        if ($count = count($this->helpTitles)) {
+            $textHelpArray = [];
+            for ($current = 0; $current < $count; $current++) {
+                $textHelpArray[] = [
+                    'title' => $this->helpTitles[$current],
+                    'text' => $this->helpTexts[$current]
+                ];
+            }
+
+            $this->_news->textHelpArray = $textHelpArray;
+        }
+
         if ($this->_news->save()) {
             $files = \Yii::$app->session->get('news-content-files', []);
 
@@ -138,10 +184,10 @@ class NewsForm extends \yii\base\Model {
                 }
             }
 
-            $images = (new Query())->select('image')->from('NewsContentImages')->where(['newsId' => $this->_news->id])->column();
+            $images = (new Query())->select('image')->from('NewsContentImage')->where(['newsId' => $this->_news->id])->column();
 
             if (!empty($images)) {
-                \Yii::$app->db->createCommand()->delete('NewsContentImages', ['newsId' => $this->_news->id])->execute();
+                \Yii::$app->db->createCommand()->delete('NewsContentImage', ['newsId' => $this->_news->id])->execute();
 
                 foreach ($images as $image) {
                     if (strpos($this->_news->textFull, $file) !== false) {
