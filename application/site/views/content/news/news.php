@@ -114,8 +114,7 @@ if ($news->tagsString) {
     </ul>
 </section>
 
-<!--
-<aside class="right">
+<aside>
     <div class="calendar fly-block">
         <div class="title">
             <button type="button" class="prev"><i class="mdi mdi-chevron-left"></i></button>
@@ -193,4 +192,3 @@ if ($news->tagsString) {
         </div>
     </div>
 </aside>
--->

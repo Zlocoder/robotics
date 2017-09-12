@@ -6,8 +6,6 @@ use app\models\NewsCategory;
 use yii\helpers\Url;
 
 class Controller extends \app\classes\Controller {
-    public $menuSection;
-
     public function beforeAction($action) {
         if (parent::beforeAction($action)) {
             $this->initMainMenu();
@@ -23,7 +21,10 @@ class Controller extends \app\classes\Controller {
             'news' => [
                 'name' => 'Новости',
                 'url' => Url::to(['news/index']),
-                'items' => NewsCategory::getMenu()
+                'items' => array_map(function($item) {
+                    $item['url'] = Url::to(['news/index', 'slug' => $item['slug']]);
+                    return $item;
+                }, NewsCategory::getMenu())
             ],
             'articles' => [
                 'name' => 'Статьи',
@@ -66,10 +67,5 @@ class Controller extends \app\classes\Controller {
                 'items' => []
             ]
         ];
-
-        if ($this->menuSection) {
-            $this->view->params['activeSection'] = $this->view->params['menu'][$this->menuSection];
-            unset($this->view->params['menu'][$this->menuSection]);
-        }
     }
 }

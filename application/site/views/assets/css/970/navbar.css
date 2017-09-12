@@ -1,0 +1,86 @@
+@media screen and (min-width: 970px) {
+    .navbar.full nav .mdi-menu {
+        display: none;
+    }
+
+    .navbar.full nav > ul {
+        float: left;
+        position: static;
+        visibility: visible;
+        opacity: 1;
+        box-shadow: none;
+    }
+
+    .navbar.full nav > ul > li {
+        float: left;
+        box-sizing: border-box;
+        margin: 0;
+        height: 48px;
+        border-left: none;
+        border-bottom: 2px solid #212121;
+    }
+
+    .navbar.full nav > ul > li:hover {
+        border-bottom: 2px solid #039be5;
+    }
+
+    .navbar.full nav > ul > li:active {
+        border-bottom: 2px solid #ff5722;
+    }
+
+    .navbar.full nav > ul > li > a {
+        height: 48px;
+        padding: 0 5px;
+        font-size: 18px;
+        line-height: 48px;
+    }
+
+    .navbar.full nav > ul > li > div {
+        left: 0;
+        top: 48px;
+        height: 0;
+    }
+
+    .navbar.full nav > ul > li:hover > div > i {
+        display: none;
+    }
+
+    .navbar.full nav > ul > li > div > ul {
+        left: 0;
+        top: -2px;
+        border-top: 2px solid #039be5;
+        z-index: 1;
+    }
+
+    .navbar.full nav > ul > li:hover > div > ul {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .navbar.full nav > ul > li > div > ul > li:first-child a:before {
+        display: none;
+    }
+
+    .navbar.collapse nav > ul > li > a {
+        font-size: 18px;
+    }
+
+    .navbar.collapse nav > ul > li > div {
+        top: 5px;
+    }
+
+    .navbar.collapse .breadcrumbs ul li:first-child a {
+        font-size: 18px;
+    }
+
+    .navbar.collapse .breadcrumbs ul li:first-child a:after {
+        content: '-';
+        display: inline-block;
+        margin-left: 10px;
+        color: #ff5722;
+    }
+
+    .navbar.collapse .breadcrumbs ul li.active {
+        display: block;
+    }
+}

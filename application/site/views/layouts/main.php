@@ -20,7 +20,9 @@
 
     <?= $this->chunk('header') ?>
 
-    <main><?= $content ?></main>
+    <div class="container">
+        <?= $content ?>
+    </div>
 
     <?= $this->chunk('footer') ?>
 

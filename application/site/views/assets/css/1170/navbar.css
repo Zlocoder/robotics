@@ -1,0 +1,13 @@
+@media screen and (min-width: 1170px) {
+    .navbar.full .logo img.small {
+        display: none;
+    }
+
+    .navbar.full .logo img.big {
+        display: inline-block;
+    }
+
+    .navbar.collapse .breadcrumbs ul li {
+        display: block;
+    }
+}
