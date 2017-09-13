@@ -2,4 +2,105 @@
     .container {
         width: 970px;
     }
+
+    .news {
+        font-size: 14px;
+    }
+
+    .news h1 {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .news h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .news p {
+        margin-bottom: 15px;
+    }
+
+    .news .full-width {
+        margin-bottom: 15px;
+    }
+
+    .news .info {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    .news .info b {
+        display: inline-block;
+    }
+
+    .news .info .author b:first-of-type {
+        display: none;
+    }
+
+    .news .info .tags {
+        width: auto;
+    }
+
+    .news .text {
+        margin-right: 285px;
+    }
+
+    .news .text .full-width {
+        margin-right: -300px;
+        margin-bottom: 15px;
+    }
+
+    .last-news h1 {
+        font-size: 24px;
+    }
+
+    .last-news ul {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .last-news ul li {
+        width: 290px;
+    }
+
+    aside .calendar {
+        display: block;
+        width: 260px;
+    }
+
+    aside .calendar .days {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px;
+        font-family: Roboto-Light, arial, sans-serif;
+        font-size: 12px;
+        color: #8f8f8f;
+    }
+
+    aside .calendar .dates {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px;
+        padding-bottom: 15px;
+        font-family: Roboto-Light, arial, sans-serif;
+        font-size: 14px;
+        color: #8f8f8f;
+    }
+
+    aside .dates a {
+        color: #3b3b3b;
+    }
+
+    aside .dates a.active {
+        color: #ff5722;
+    }
+
+    aside .linked-news {
+        width: 290px;
+    }
+
+    aside .linked-products {
+        width: 290px;
+    }
 }

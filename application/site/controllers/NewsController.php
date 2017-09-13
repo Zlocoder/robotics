@@ -8,13 +8,15 @@ use yii\helpers\Html;
 use yii\web\NotFoundHttpException;
 
 class NewsController extends \site\classes\Controller {
-    public function setBreadcrumbs($slug) {
+    public function setBreadcrumbs($slug = null) {
         $this->view->params['breadcrumbs'] = $this->view->params['menu']['news'];
 
-        foreach ($this->view->params['breadcrumbs']['items'] as $index => $item) {
-            if ($item['slug'] == $slug) {
-                $this->view->params['breadcrumbs']['items'][$index]['active'] = true;
-                break;
+        if ($slug) {
+            foreach ($this->view->params['breadcrumbs']['items'] as $index => $item) {
+                if ($item['slug'] == $slug) {
+                    $this->view->params['breadcrumbs']['items'][$index]['active'] = true;
+                    break;
+                }
             }
         }
     }
@@ -42,6 +44,18 @@ class NewsController extends \site\classes\Controller {
         ]);
     }
 
+    public function actionTag($tag) {
+        $this->setBreadcrumbs();
+
+        $news = News::find()->where(['like', 'tags', "[[{$tag}]]"])->all();
+
+        return $this->render('category', [
+            'slug' => null,
+            'category' => null,
+            'news' => $news
+        ]);
+    }
+
     public function actionNews($slug) {
         $parts = explode('/', $slug);
 
@@ -53,10 +67,10 @@ class NewsController extends \site\classes\Controller {
         }
 
         $content = $news->textFull;
-        $content = str_replace('[[img]]', Html::img($news->imageUrl, ['class' => 'full-width']), $content);
+        $content = str_replace('<p>[[img]]</p>', '<div class="full-width"><img src="' . $news->imageUrl . '" /></div>', $content);
 
         $helps = $news->textHelpArray;
-        preg_match_all('/\[\[help\d+\]\]/', $content, $matches);
+        preg_match_all('/<p>\[\[help\d+\]\]<\/p>/', $content, $matches);
         if ($matches) {
             foreach ($matches[0] as $match) {
                 preg_match('/\d+/', $match, $num);

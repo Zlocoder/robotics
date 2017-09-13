@@ -29,6 +29,23 @@ class News extends \yii\db\ActiveRecord {
                 }
             ],
 
+            [
+                'linkedNews', 'filter',
+                'filter' => function($linkedNews) {
+                    if (strpos($linkedNews, ',')) {
+                        $linkedNews = explode(',', $linkedNews);
+
+                        array_walk($linkedNews, function(&$news) {
+                            $news = '[[' . trim($news) . ']]';
+                        });
+
+                        $linkedNews =  implode('', $linkedNews);
+                    }
+
+                    return $linkedNews;
+                }
+            ],
+
             [['title', 'slug', 'categoryId', 'created', 'textShort', 'textFull'], 'required', 'on' => 'default'],
             [['title', 'slug', 'h1', 'metaTitle'], 'string', 'max' => 128, 'on' => 'default'],
             [['imageText', 'metaDescription', 'tags', 'redirect'], 'string', 'max'  => 256, 'on' => 'default'],
@@ -79,6 +96,15 @@ class News extends \yii\db\ActiveRecord {
 
     public function getTagsString() {
         return trim(str_replace(']][[', ', ', $this->tags), '[]');
+    }
+    
+    public function getLinkedNewsArray() {
+        $linkedNews = explode(']][[', $this->tags);
+        $last = count($linkedNews) - 1;
+        $linkedNews[0] = ltrim($linkedNews[0], '[[');
+        $linkedNews[$last] = rtrim($linkedNews[$last], ']]');
+
+        return $linkedNews;
     }
 
     public function getTextHelpArray() {

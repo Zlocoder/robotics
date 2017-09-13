@@ -2,4 +2,73 @@
     .container {
         width: 1170px;
     }
+
+    .news .text {
+        margin-left: 175px;
+    }
+
+    .news .text .full-width {
+        margin-left: -190px;
+    }
+
+    .news .text aside {
+        display: block;
+        position: relative;
+    }
+
+    .news .text aside div {
+        position: absolute;
+        left: -175px;
+        width: 150px;
+        border-top: 1px solid #939393;
+        color: #8f8f8f;
+    }
+
+    .news .text aside h3 {
+        margin-top: 20px;
+        margin-bottom: 5px;
+        font-family: Roboto-Medium, arial, sans-serif;
+        font-size: 12px;
+    }
+
+    .news .text aside p {
+        font-family: Roboto-Light, arial, sans-serif;
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .last-news ul li {
+        width: 360px;
+    }
+
+    .last-news article img {
+        width: 165px;
+        height: 96px;
+    }
+
+    .last-news article p {
+        position: relative;
+        margin-left: 165px;
+        height: 96px;
+        padding: 15px;
+    }
+
+    .last-news article p a {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .last-news article p span {
+        display: block;
+        position: absolute;
+        bottom: 15px;
+        font-family: Roboto-Light, arial, sans-serif;
+        font-size: 10px;
+        color: #8f8f8f;
+    }
+
+    .last-news article p span .mdi {
+        vertical-align: middle;
+        font-size: 16px;
+    }
 }

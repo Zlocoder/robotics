@@ -20,6 +20,7 @@ class NewsForm extends \yii\base\Model {
     public $metaDescription;
     public $tags;
     public $redirect;
+    public $linkedNews;
 
     private $_news;
 
@@ -54,7 +55,10 @@ class NewsForm extends \yii\base\Model {
                 },
                 'on' => ['create', 'update']
             ],
-
+            [
+                ['linkedNews'], 'each',
+                'rule' => ['safe']
+            ],
             [
                 ['title', 'slug', 'h1', 'metaTitle'], 'string',
                 'max' => 128,

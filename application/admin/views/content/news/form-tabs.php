@@ -37,6 +37,11 @@
                                 'label' => 'Сопроводительный текст',
                                 'content' => $this->render('form-tab-help-text', ['model' => $model, 'form' => $form]),
                                 'active' => false
+                            ],
+                            [
+                                'label' => 'Новости по теме',
+                                'content' => $this->render('form-tab-linked-news', ['model' => $model, 'form' => $form]),
+                                'active' => false
                             ]
                         ]
                     ]) ?>

@@ -1,6 +1,386 @@
+@font-face {
+    font-family: Roboto-Thin;
+    src: local(Roboto);
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: Roboto-Light;
+    src: local(Roboto);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Roboto-Regular;
+    src: local(Roboto);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Roboto-Medium;
+    src: local(Roboto);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Roboto-Bold;
+    src: local(Roboto);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: Roboto-Black;
+    src: local(Roboto);
+    font-weight: 900;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    box-sizing: border-box;
+    height: 100%;
+    padding-top: 48px;
+    background: url('../../img/patternchip.gif');
+    color: #3b3b3b;
+}
+
+body > header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 48px;
+    z-index: 1;
+}
+
+body > footer {
+    text-align: center;
+    font-family: Roboto-Light, arial, sans-serif;
+    font-size: 12px;
+}
+
+body > footer .content {
+    border-top: 1px solid #939393;
+}
+
+body > footer .logo {
+    margin-bottom: 20px;
+}
+
+body > footer .logo a {
+    display: inline-block;
+}
+
+body > footer p {
+    margin-bottom: 10px;
+}
+
 .container {
     width: 100%;
     margin: 0 auto;
     background-color: #eee;
 }
 
+.content {
+    padding: 25px 15px;
+}
+
+.fly-block {
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.news {
+    position: relative;
+    font-family: Roboto-Light, arial, sans-serif;
+    font-size: 12px;
+}
+
+.news h1 {
+    font-family: Roboto-Medium, arial, sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.news h2 {
+    font-family: Roboto-Medium, arial, sans-serif;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.news p {
+    margin-bottom: 10px;
+    line-height: 14px;
+}
+
+.news a {
+    color: #0277bd;
+}
+
+.news .info {
+    font-size: 10px;
+    line-height: 20px;
+    color: #8f8f8f;
+}
+
+.news .info * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.news .info div {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.news .info .mdi {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.news .info b {
+    display: none;
+    font-family: Roboto-Medium, arial, sans-serif;
+}
+
+.news .info img {
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+
+.news .info a {
+    color: #8f8f8f;
+}
+
+.news .info .author {
+    background-color: #dedede;
+    border-radius: 10px;
+    padding-right: 10px;
+}
+
+.news .info .author b:first-of-type {
+    display: inline-block;
+}
+
+.news .info .tags {
+    width: 100%;
+}
+
+.news .info .tags a {
+    background-color: #dedede;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+.news .text .full-width {
+    display: block;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 10px;
+}
+
+.news .text img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.news .text aside {
+    display: none;
+}
+
+.last-news {
+    border-top: 2px solid #939393;
+    border-bottom: 2px solid #939393;
+}
+
+.last-news h1 {
+    font-family: Roboto-Medium, arial, sans-serif;
+    font-size: 16px;
+    color: #3b3b3b;
+    margin-bottom: 20px;
+}
+
+.last-news article img {
+    float: left;
+    width: 110px;
+    height: 60px;
+}
+
+.last-news article p {
+    box-sizing: border-box;
+    margin-left: 110px;
+    padding: 10px;
+    height: 60px;
+}
+
+.last-news article p a {
+    display: block;
+    font-family: Roboto-Light, arial, sans-serif;
+    font-size: 10px;
+    line-height: 12px;
+    color: #3b3b3b;
+}
+
+.last-news article p span {
+    display: none;
+}
+
+aside {
+    position: relative;
+}
+
+aside section header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: Roboto-Medium, arial, sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3b3b3b;
+    border-bottom: 1px solid #939393;
+}
+
+aside section header button {
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+}
+
+aside section footer {
+    border-top: 1px solid #939393;
+    padding: 15px;
+}
+
+aside .calendar {
+    display: none;
+}
+
+aside .linked-news img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+aside .linked-news p {
+    padding: 15px;
+}
+
+aside .linked-news p a {
+    display: block;
+    font-family: Roboto-Light, arial, sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    color: #3b3b3b;
+    margin-bottom: 10px;
+}
+
+aside .linked-news p span {
+    display: block;
+    font-family: Roboto-Light, arial, sans-serif;
+    font-size: 10px;
+    color: #8f8f8f;
+}
+
+aside .linked-news p span .mdi {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+aside .linked-products article {
+    padding: 15px;
+}
+
+aside .linked-products img {
+    float: left;
+    width: 124px;
+    height: 124px;
+}
+
+aside .linked-products p {
+    margin-left: 140px;
+}
+
+aside .linked-products p:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+aside .linked-products p a {
+    display: block;
+    font-family: Roboto-Light, arial, sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    color: #3b3b3b;
+    margin-bottom: 5px;
+}
+
+aside .linked-products p span {
+    display: block;
+    font-family: Roboto-Light, arial, sans-serif;
+    font-size: 10px;
+    color: #8f8f8f;
+}
+
+aside .linked-products p span b {
+    font-family: Roboto-Medium, arial, sans-serif;
+    font-size: 10px;
+    color: #8f8f8f;
+}
+
+aside .linked-products p span a {
+    display: inline;
+    font-family: Roboto-Light, arial, sans-serif;
+    font-size: 10px;
+    color: #8f8f8f;
+}
+
+aside .linked-products p span.price {
+    text-align: center;
+    font-family: Roboto-Medium, arial, sans-serif;
+    font-size: 16px;
+    color: #3b3b3b;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+aside .linked-products p a.more {
+    text-align: center;
+    background-color: #0277bd;
+    color: #fff;
+    font-family: Roboto-Medium, arial, sans-serif;
+    font-size: 14px;
+    padding: 10px 0;
+    text-decoration: none;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+aside .linked-products footer span {
+    display: block;
+    font-family: Roboto-Light, arial, sans-serif;
+    font-size: 10px;
+    color: #8f8f8f;
+}
+
+aside .linked-products footer span:first-child {
+    margin-bottom: 10px;
+}
+
+aside .linked-products footer span .mdi {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+}

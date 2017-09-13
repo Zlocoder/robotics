@@ -7,24 +7,63 @@ $(function() {
         }
     }).scroll();
 
-    if ($('article.news').length) {
-        if ($('article.news img.full-width').length) {
-            $('aside.left div').css('position', 'absolute');
-            $('aside.left div:first').css('top', '50px');
+    $(window).resize(function() {
+        if ($(window).width() >= 970 && $(window).width() < 1170) {
+            $('aside .content').css('padding', 0);
 
-            var height = $('article.news img.full-width').position().top + $('article.news img.full-width').height() - 70;
-            $('aside.left div').not(':first').each(function() {
-                $(this).css('top', height + 30 + 'px');
-                height += 50 + $(this).height();
+            $('.calendar').css({
+                position: 'absolute',
+                left: '695px',
+                top: 0 - $('.last-news').height() - $('.news').height() + $('.news .text').position().top + 'px'
             });
 
-            height = $('article.news img.full-width').position().top + $('article.news img.full-width').height() - 70;
-            $('aside.right .theme-news').css('position', 'absolute');
-            $('aside.right .theme-news').css('top', height + 30 + 'px');
+            if ($('.news .full-width').length == 1) {
+                $('.linked-news').css({
+                    position: 'absolute',
+                    left: '695px',
+                    top: 0 - $('.last-news').height() - $('.news').height() + $('.news .full-width').position().top + $('.news .full-width').height() + 30 + 'px'
+                });
+            } else {
+                $('.linked-news').css({
+                    position: 'absolute',
+                    left: '695px',
+                    top: $('.calendar').position().top + $('.calendar').height() + 30 + 'px'
+                });
+            }
 
-            height += 30 + $('aside.right .theme-news').height();
-            $('aside.right .shop-products').css('position', 'absolute');
-            $('aside.right .shop-products').css('top', height + 30 + 'px');
+            $('.linked-products').css({
+                position: 'absolute',
+                left: '695px',
+                top: $('.linked-news').position().top + $('.linked-news').height() + 30 + 'px'
+            });
+        } else if ($(window).width() >= 1170) {
+            $('aside .content').css('padding', 0);
+
+            $('.calendar').css({
+                position: 'absolute',
+                left: '890px',
+                top: 0 - $('.last-news').height() - $('.news').height() + $('.news .text').position().top + 'px'
+            });
+
+            if ($('.news .full-width').length == 1) {
+                $('.linked-news').css({
+                    position: 'absolute',
+                    left: '890px',
+                    top: 0 - $('.last-news').height() - $('.news').height() + $('.news .full-width').position().top + $('.news .full-width').height() + 30 + 'px'
+                });
+            } else {
+                $('.linked-news').css({
+                    position: 'absolute',
+                    left: '890px',
+                    top: $('.calendar').position().top + $('.calendar').height() + 30 + 'px'
+                });
+            }
+
+            $('.linked-products').css({
+                position: 'absolute',
+                left: '890px',
+                top: $('.linked-news').position().top + $('.linked-news').height() + 30 + 'px'
+            });
         }
-    }
+    }).resize();
 });

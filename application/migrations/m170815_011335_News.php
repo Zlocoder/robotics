@@ -22,6 +22,7 @@ class m170815_011335_News extends Migration
             'metaDescription' => $this->string(256),
             'tags' => $this->string(256),
             'redirect' => $this->string(256),
+            'linkedNews' => $this->string(128)
         ]);
 
         $this->createIndex('News_title', 'news', 'title', true);
